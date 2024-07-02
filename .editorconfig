@@ -1,0 +1,24 @@
+root = true
+
+[*]
+indent_style = tab
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+
+# root = true: This indicates that this is the top-most .editorconfig file in the directory structure.
+# [*]: Applies to all files.
+# indent_style = space: Uses spaces for indentation.
+# indent_size = 4: Sets the number of spaces per indentation level.
+# end_of_line = lf: Uses Unix-style line endings.
+# charset = utf-8: Uses UTF-8 character encoding.
+# trim_trailing_whitespace = true: Removes any whitespace characters preceding newline characters.
+# insert_final_newline = true: Ensures that files end with a newline.
+# [*.md]: This section applies specifically to Markdown files.
+# trim_trailing_whitespace = false: Preserves trailing whitespace in Markdown files for better compatibility with Markdown editors and viewers.
