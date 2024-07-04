@@ -15,7 +15,8 @@ declare module "next-auth" {
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
 	callbacks: {
-		async signIn({ user }) {
+		async signIn({ user, account }) {
+			if (account?.provider !== "credentials") return true;
 			if (!user.id) {
 				return false;
 			}
