@@ -38,7 +38,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 			}
 			const existingUser = await getUserById(user.id);
 
-			if (!existingUser || !existingUser.emailVerified) {
+			if (!existingUser?.emailVerified) {
 				return false;
 			}
 			return true;
