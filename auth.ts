@@ -48,8 +48,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 					existingUser.id
 				);
 
-				console.log('🟢====>twoFactorConfirmation', twoFactorConfirmation);
-
 				if (!twoFactorConfirmation) return false;
 
 				// Delete two factor confirmation for next sign in
@@ -69,6 +67,10 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 			if (token.role && session.user) {
 				session.user.role = token.role as "ADMIN" | "USER";
 			}
+
+			if (session.user) {
+				session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
+			}
 			return session;
 		},
 		async jwt({ token }) {
@@ -81,6 +83,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 				return token;
 			}
 			token.role = existingUser.role;
+			token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
 			return token;
 		},
 	},
